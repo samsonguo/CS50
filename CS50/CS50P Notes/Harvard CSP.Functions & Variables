@@ -1,0 +1,168 @@
+FUNCTIONS AND VARIABLES
+
+# Parameters
+print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+can change sep and end
+\n output print object on separate lines
+
+print("Hello world" , end = ' ')
+print("Welcome to stechies", end = ' ')
+Hello world Welcome to stechies
+
+name = input("What's your name? ")
+print("Hello", name)
+
+# Formatted string
+name = input("What's your name? ")
+print(f'Hello {name}')
+
+# Strip white space from string
+name = name.strip()
+Can also use lstrip or rstrip
+
+# Capitalize
+name = name.capitalize()
+Will only capitalize first word
+
+#Title
+name = name.title()
+
+#Chaining functions
+name = input("What's your name? ")
+name = name.strip().title()
+or name = input("What's your name? ").strip().title()
+
+#Split name into first and last
+string.split(separator, maxsplit)
+name = input("What's your name? ").strip().title()
+first, last = name.split(" ")
+print(f'Hello {first}')
+
+#Integer
+x = input("What's x?")
+y = input(What's y?")
+z = int(x) + int(y)
+
+or
+
+x=int(input("What's x?"))
+y=int(input("What's y?"))
+
+#Float
+x = float(input("What's x?"))
+y = float(input("What's y?"))
+
+example
+if y == "+":
+    result = num1+num2
+    print(f"{result:.1f}")
+elif y == "-":
+    result = num1-num2
+    print(f"{result:.1f}")
+elif y == "*":
+    result = num1*num2
+    print(f"{result:.1f}")
+elif y == "/":
+    result = num1/num2
+    print(f"{result:.1f}")
+
+#Rounding
+round(number[, ndigits])
+x = float(input("What's x?"))
+y = float(input("What's y?"))
+z = round(x + y, 2)
+print(f"{z:,}") - 1,000 instead of 1000
+
+#Specifying rounding with formatted string
+#print(f"{z:.2f}") - same as round(x + y, 2)
+
+#def - Creating functions
+def my_function (fname, lname):
+    print(fname + " " + lname)
+my_function("Emil", "refsnes")
+
+or
+
+def my_function (fname)
+    print(fname +"Refsnes")
+
+another example
+
+def hello(to):
+    print("hello",to)
+name = input("What's your name?")
+hello(name)
+
+#Calling the function without an argument - making a default argument
+def hello(to="world"):
+    print("hello", to)
+hello()
+name = input("What's your name? ")
+hello(name)
+
+#def the main part of the code before using it
+def main():
+    name = input("What's your name?")
+    hello(name)
+def hello(to="world"):
+    print("hello", to)
+main()
+
+another example
+
+def convert(message):
+    print(message)
+message = input().replace(":)", "🙂")
+convert(message)
+
+#Returns
+def main():
+x = int(input("What's x? "))
+    print("x squared is:", square(x))
+def square(n):
+    return n ** 2 or pow(n, 2)
+main()
+
+#Replace
+string.replace(oldvalue, newvalue, count)
+
+def main():
+    dollars = dollars_to_float(input("How much was the meal? "))
+    percent = percent_to_float(input("What percentage would you like to tip? "))
+    tip = dollars * percent
+    print(f"Leave ${tip:.2f}")
+
+def dollars_to_float(d):
+    d = float(d.strip().replace("$", ""))
+    return d
+def percent_to_float(p):
+    p = float(p.strip().replace("%", "")) / 100.0
+    return p
+main()
+
+#
+def main():
+    message = input("Message: ")
+    final_message = convert(message)
+    print(final_message)
+def convert(message):
+    message = message.replace(":)", "🙂").replace(":(", "🙁")
+    return message
+main()
+
+#def main():
+    time = input("What time is it? ")
+    if 7 <= convert(time) <= 8:
+        print("Breakfast Time")
+    if 12 <= convert(time) <= 13:
+        print("Lunch Time")
+    if 18 <= convert(time) <= 19:
+        print("Dinner Time")
+
+def convert(time):
+    hours, minutes = time.split(":")
+    new_hour = float(hours)
+    new_minute = float(minutes) / 60
+    return round(new_hour + new_minute,2)
+
+

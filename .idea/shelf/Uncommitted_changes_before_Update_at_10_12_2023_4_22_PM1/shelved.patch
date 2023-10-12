@@ -1,0 +1,1244 @@
+Index: CS50/Problem Set 1/deep thought.py
+===================================================================
+diff --git a/CS50/Problem Set 1/deep thought.py b/CS50/Problem Set 1/deep thought.py
+deleted file mode 100644
+--- a/CS50/Problem Set 1/deep thought.py	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-answer = input("What is the Answer to the Great Question of Life, the Universe, and Everything? ")
+-if answer.lower().strip() == "42" or "forty-two" or "forty two":
+-    print("Yes")
+-else:
+-    print("No")
+-
+Index: CS50/.idea/CS50.iml
+===================================================================
+diff --git a/CS50/.idea/CS50.iml b/CS50/.idea/CS50.iml
+deleted file mode 100644
+--- a/CS50/.idea/CS50.iml	
++++ /dev/null	
+@@ -1,16 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="PYTHON_MODULE" version="4">
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$">
+-      <excludeFolder url="file://$MODULE_DIR$/venv" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-  <component name="PackageRequirementsSettings">
+-    <option name="requirementsPath" value="" />
+-  </component>
+-  <component name="PyDocumentationSettings">
+-    <option name="analyzeDoctest" value="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: CS50/Problem Set 1/meal time.py
+===================================================================
+diff --git a/CS50/Problem Set 1/meal time.py b/CS50/Problem Set 1/meal time.py
+deleted file mode 100644
+--- a/CS50/Problem Set 1/meal time.py	
++++ /dev/null	
+@@ -1,21 +0,0 @@
+-def main():
+-    time = input("What time is it? ")
+-    if 7 <= convert(time) <= 8:
+-        print("Breakfast Time")
+-    if 12 <= convert(time) <= 13:
+-        print("Lunch Time")
+-    if 18 <= convert(time) <= 19:
+-        print("Dinner Time")
+-
+-
+-def convert(time):
+-    hours, minutes = time.split(":")
+-    new_hours = float(hours)
+-    new_minutes = round(float(minutes)/60,2)
+-    time = (new_hours + new_minutes)
+-    return time
+-
+-if __name__ == "__main__":
+-    main()
+-
+-
+Index: CS50/Problem Set 4/professor.py
+===================================================================
+diff --git a/CS50/Problem Set 4/professor.py b/CS50/Problem Set 4/professor.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/professor.py	
++++ /dev/null	
+@@ -1,128 +0,0 @@
+-
+-"""
+-Gio's code
+-import random
+-
+-
+-def main():
+-    level = get_level()
+-    score = simulate_game(level)
+-    print("Score: ", score)
+-
+-def get_level():
+-    while True:
+-        try:
+-            level = int(input("Level: "))
+-            if level in [1,2,3]:
+-                break
+-        except:
+-            pass
+-    return level
+-
+-def generate_integer(level):
+-    if level == 1:
+-        x = random.randint(0,9)
+-        y = random.randint(0, 9)
+-    elif level == 2:
+-        x = random.randint(10,99)
+-        y = random.randint(10, 99)
+-    elif level == 3:
+-        x = random.randint(100, 999)
+-        y = random.randint(100, 999)
+-    return x,y
+-
+-def simulate_round(x,y):
+-    count_tries = 1
+-    while count_tries <= 3:
+-        try:
+-            answer = int(input(f" {x} + {y} = "))
+-            if answer == (x+y):
+-                return True
+-            else:
+-                count_tries =+ 1
+-                print("EEE")
+-        except:
+-            count_tries =+ 1
+-            print("EEE")
+-    print(f'{x} + {y} = {x+y}')
+-    return False
+-
+-
+-def simulate_game(level):
+-    count_round = 1
+-    score = 0
+-    while count_round <= 10:
+-        x,y = generate_integer(level)
+-        response = simulate_round(x,y)
+-        if response == True:
+-            score += 1
+-        count_round += 1
+-    return score
+-
+-if __name__ == "__main__":
+-    main()
+-"""
+-
+-#My code
+-import random
+-
+-
+-def main():
+-    #call get_level()
+-    level = get_level()
+-    #get the score
+-    score = 0
+-    problems_generated = 0
+-    while problems_generated < 10:
+-        x = generate_integer(level)
+-        y = generate_integer(level)
+-        answer = x + y
+-        attempts = 0
+-        while attempts < 3:
+-            try:
+-                user_answer = int(input(f' {x} + {y} ='))
+-                if user_answer == answer:
+-                    score += 1
+-                    break
+-                else:
+-                    attempts += 1
+-                    print("EEE")
+-            except ValueError:
+-                print("EEE")
+-                attempts += 1
+-        if attempts == 3:
+-            print(f"Correct answer: {answer}")
+-            break
+-        problems_generated += 1
+-    print(f"Your score: {score}/10")
+-    #print
+-
+-
+-def get_level():
+-    #loop forever
+-    #prompts( and, if need be, re-prompts) the user for a level and returns 1, 2, or 3,
+-    while True:
+-        try:
+-            level = int(input("Level (1,2, or 3): "))
+-            if level in [1, 2, 3]:
+-                return level
+-            else:
+-                print("Level needs to be either 1, 2, or 3.")
+-                pass
+-        except ValueError:
+-            print("Invalid level. Please enter 1, 2, or 3.")
+-            pass
+-
+-
+-def generate_integer(level):
+-    #returns a randomly generated non-negative integer with level digits or raises a ValueError if level is not 1, 2, or 3:
+-    if level == 1:
+-        return random.randint(0, 9)
+-    elif level == 2:
+-        return random.randint(10, 99)
+-    elif level == 3:
+-        return random.randint(100, 999)
+-
+-
+-if __name__ == "__main__":
+-    main()
+\ No newline at end of file
+Index: CS50/.idea/modules.xml
+===================================================================
+diff --git a/CS50/.idea/modules.xml b/CS50/.idea/modules.xml
+deleted file mode 100644
+--- a/CS50/.idea/modules.xml	
++++ /dev/null	
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/CS50.iml" filepath="$PROJECT_DIR$/.idea/CS50.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: CS50/Problem Set 4/adieu.py
+===================================================================
+diff --git a/CS50/Problem Set 4/adieu.py b/CS50/Problem Set 4/adieu.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/adieu.py	
++++ /dev/null	
+@@ -1,15 +0,0 @@
+-
+-
+-import inflect
+-
+-p = inflect.engine()
+-name_list = []
+-
+-while True:
+-    try:
+-        name = input("Name: ").strip().title()
+-        name_list.append(name)
+-    except EOFError:
+-        print()
+-        print("Adieu, adieu, to", p.join(name_list))
+-        break
+\ No newline at end of file
+Index: CS50/Problem Set 5/test_plates.py
+===================================================================
+diff --git a/CS50/Problem Set 5/test_plates.py b/CS50/Problem Set 5/test_plates.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/test_plates.py	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-from plates import is_valid
+-
+-
+-# “All vanity plates must start with at least two letters.”
+-def test_begintwoletters():
+-    assert is_valid("CS") == True
+-    assert is_valid("50") == False
+-    assert is_valid("C5") == False
+-    assert is_valid("5") == False
+-
+-
+-# “… vanity plates may contain a maximum of 6 characters (letters or numbers) and a minimum of 2 characters.”
+-def test_length():
+-    assert is_valid("HICS50") == True
+-    assert is_valid("CS") == True
+-    assert is_valid("HELLOCS50") == False
+-
+-
+-# “Numbers cannot be used in the middle of a plate; they must come at the end.
+-#  For example, AAA222 would be an acceptable … vanity plate; AAA22A would not be acceptable.
+-# The first number used cannot be a ‘0’.”
+-def test_num():
+-    assert is_valid("AAA222") == True
+-    assert is_valid("AAA22A") == False
+-    assert is_valid("AAA022") == False
+-
+-
+-# “No periods, spaces, or punctuation marks are allowed.”
+-def test_punct():
+-    assert is_valid("CS50!") == False
+\ No newline at end of file
+Index: CS50/Problem Set 1/math interpreter.py
+===================================================================
+diff --git a/CS50/Problem Set 1/math interpreter.py b/CS50/Problem Set 1/math interpreter.py
+deleted file mode 100644
+--- a/CS50/Problem Set 1/math interpreter.py	
++++ /dev/null	
+@@ -1,22 +0,0 @@
+-# Can also use eval():
+-# math = input("Expression: ").strip().replace(" ", "")
+-# print(float(eval(math)))
+-
+-math = input("Expression: ").strip()
+-x, y, z = math.split(" ")
+-
+-num1 = float(x)
+-num2 = float(z)
+-
+-if y == "+":
+-    result = num1+num2
+-    print(f"{result:.1f}")
+-elif y == "-":
+-    result = num1-num2
+-    print(f"{result:.1f}")
+-elif y == "*":
+-    result = num1*num2
+-    print(f"{result:.1f}")
+-elif y == "/":
+-    result = num1/num2
+-    print(f"{result:.1f}")
+\ No newline at end of file
+Index: CS50/Problem Set 2/vanity plates.py
+===================================================================
+diff --git a/CS50/Problem Set 2/vanity plates.py b/CS50/Problem Set 2/vanity plates.py
+deleted file mode 100644
+--- a/CS50/Problem Set 2/vanity plates.py	
++++ /dev/null	
+@@ -1,31 +0,0 @@
+-def main():
+-    plate = input("Plate: ")
+-    if is_valid(plate):
+-        print("Valid")
+-    else:
+-        print("Invalid")
+-
+-
+-def is_valid(s):
+-    # maximum of 6 characters and all characters have to be alphanumeric
+-    if 2 <= len(s) <= 6 and s.isalnum():
+-        # Return true if characters are all letters
+-        if s.isalpha():
+-            return True
+-        else:
+-            # Check for number in the middle
+-            # (only if the first two characters are letters and the last character is number)
+-            if s[:2].isalpha() and s[-1:].isdigit():
+-                for i in range(len(s)):
+-                    if s[i].isdigit():
+-                        # Return false if number starts with 0 or the following character is letter
+-                        if s[i].startswith("0") or s[i:].isalpha():
+-                            return False
+-                        else:
+-                            return True
+-            else:
+-                return False
+-    else:
+-        return False
+-
+-main()
+Index: CS50/Problem Set 4/guess.py
+===================================================================
+diff --git a/CS50/Problem Set 4/guess.py b/CS50/Problem Set 4/guess.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/guess.py	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-import random
+-
+-while True:
+-    try:
+-        level = int(input("Level: "))
+-        x = random.randint(1, level)
+-        while True:
+-            guess = int(input("Guess: "))
+-            if guess > x:
+-                print("Too large!")
+-            elif guess < x:
+-                print("Too small!")
+-            elif guess == x:
+-                print("Just right!")
+-                raise EOFError
+-    except ValueError:
+-        pass
+-    except EOFError:
+-        break
+\ No newline at end of file
+Index: CS50/Problem Set 5/test_fuel.py
+===================================================================
+diff --git a/CS50/Problem Set 5/test_fuel.py b/CS50/Problem Set 5/test_fuel.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/test_fuel.py	
++++ /dev/null	
+@@ -1,24 +0,0 @@
+-import pytest
+-from fuel import convert, gauge
+-
+-
+-def test_convert():
+-    assert convert("1/2") == 50
+-    assert convert("99/100") == 99
+-    assert convert("1/100") == 1
+-
+-
+-def test_gauge():
+-    assert gauge(50) == "50%"
+-    assert gauge(99) == "F"
+-    assert gauge(1) == "E"
+-
+-
+-def test_zero_division():
+-    with pytest.raises(ZeroDivisionError):
+-        convert("1/0")
+-
+-
+-def test_value_error():
+-    with pytest.raises(ValueError):
+-        convert("2/1")
+\ No newline at end of file
+Index: CS50/Problem Set 3/fuel gage.py
+===================================================================
+diff --git a/CS50/Problem Set 3/fuel gage.py b/CS50/Problem Set 3/fuel gage.py
+deleted file mode 100644
+--- a/CS50/Problem Set 3/fuel gage.py	
++++ /dev/null	
+@@ -1,44 +0,0 @@
+-
+-"""def main():
+-    x = get_fraction("Fraction: ")
+-    print(x)
+-
+-
+-def get_fraction(prompt):
+-    while True:
+-        try:
+-            x, y = input(prompt).split("/")
+-            if 0 <= int(x)/int(y) <= 0.1:
+-                return("E")
+-            elif 0.9 <= int(x)/int(y) <= 1:
+-                return("F")
+-            elif 0.1 < int(x)/int(y) < 0.9:
+-                return str(round(int(x)/int(y)*100)) + "%"
+-        except (ValueError, ZeroDivisionError):
+-            pass
+-
+-
+-main()
+-"""
+-
+-while True:
+-    try:
+-        fuel = input("Fraction: ")
+-        numerator, denominator = fuel.split("/")
+-        f = int(numerator) / int(denominator)
+-        if 0 <= f <= 100:
+-            break
+-    except (ValueError, ZeroDivisionError):
+-        pass
+-
+-p = f * 100
+-if round(p) >= 99:
+-    print("F")
+-elif round(p) <= 1:
+-    print("E")
+-else:
+-    print(f'{round(p)}%')
+-
+-
+-
+-
+Index: CS50/Problem Set 3/felipe's taqueria.py
+===================================================================
+diff --git a/CS50/Problem Set 3/felipe's taqueria.py b/CS50/Problem Set 3/felipe's taqueria.py
+deleted file mode 100644
+--- a/CS50/Problem Set 3/felipe's taqueria.py	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-items = {
+-    "Baja Taco": 4.00,
+-    "Burrito": 7.50,
+-    "Bowl": 8.50,
+-    "Nachos": 11.00,
+-    "Quesadilla": 8.50,
+-    "Super Burrito": 8.50,
+-    "Super Quesadilla": 9.50,
+-    "Taco": 3.00,
+-    "Tortilla Salad": 8.00
+-}
+-
+-total = 0
+-
+-while True:
+-    try:
+-        menu_item = input("Item: ").title().strip()
+-        if menu_item in items:
+-            total += items[menu_item]
+-            print("Total: $", end="")
+-            print("{:.2f}".format(total))
+-        else:
+-            print("Choose from the menu")
+-
+-
+-    except EOFError:
+-        print()
+-        break
+-
+-
+Index: CS50/.idea/.gitignore
+===================================================================
+diff --git a/CS50/.idea/.gitignore b/CS50/.idea/.gitignore
+deleted file mode 100644
+--- a/CS50/.idea/.gitignore	
++++ /dev/null	
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: CS50/Problem Set 4/bitcoin.py
+===================================================================
+diff --git a/CS50/Problem Set 4/bitcoin.py b/CS50/Problem Set 4/bitcoin.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/bitcoin.py	
++++ /dev/null	
+@@ -1,54 +0,0 @@
+-"""
+-import sys
+-import requests
+-
+-
+-def main():
+-    if len(sys.argv) == 2:
+-        try:
+-            n = float(sys.argv[1])
+-            print(btc_price(n))
+-        except ValueError:
+-            sys.exit("Command-line argument is not a number")
+-    else:
+-        sys.exit("Missing command-line argument")
+-
+-
+-def btc_price(num):
+-    try:
+-        response = requests.get(f"https://api.coindesk.com/v1/bpi/currentprice.json")
+-        result = response.json()
+-        price = result["bpi"]["USD"]["rate_float"]
+-        total = price * num
+-        return f"${total:,.4f}"
+-    except requests.RequestException:
+-        return None
+-
+-
+-main()
+-"""
+-
+-
+-
+-import sys
+-import requests
+-
+-if len(sys.argv) == 2:
+-    try:
+-        value = float(sys.argv[1])
+-    except:
+-        print("Command-line argument is not a number")
+-else:
+-    print("missing command-line argument")
+-    sys.exit(1)
+-
+-try:
+-    r = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+-    response = r.json()
+-    bitcoin = response['bpi']['USD']['rate_float']
+-    total_amount = bitcoin * value
+-    print(f'${total_amount:,.4f}')
+-
+-except requests.RequestException:
+-    print("RequestException")
+-    sys.exit(1)
+Index: CS50/Problem Set 1/home federal savings bank.py
+===================================================================
+diff --git a/CS50/Problem Set 1/home federal savings bank.py b/CS50/Problem Set 1/home federal savings bank.py
+deleted file mode 100644
+--- a/CS50/Problem Set 1/home federal savings bank.py	
++++ /dev/null	
+@@ -1,18 +0,0 @@
+-greeting = input("Greeting: ").strip().lower()
+-if greeting == "hello":
+-    print("$0")
+-elif "h" in greeting and "hello" not in greeting:
+-    print("$20")
+-else:
+-    print("$100")
+-
+-
+-""""
+-greeting = (input("Greeting: ")).lower().strip()
+-if greeting.startswith("hello"):
+-    print("$0")
+-elif greeting.startswith("h"):
+-    print("$20")
+-else:
+-    print("$100")
+-"""
+Index: CS50/Problem Set 2/just setting up my twttr.py
+===================================================================
+diff --git a/CS50/Problem Set 2/just setting up my twttr.py b/CS50/Problem Set 2/just setting up my twttr.py
+deleted file mode 100644
+--- a/CS50/Problem Set 2/just setting up my twttr.py	
++++ /dev/null	
+@@ -1,8 +0,0 @@
+-tweet = input("Tweet: ")
+-print("twt: ", end="")
+-
+-vowel = ["a", "e", "i", "o", "u"]
+-
+-for letter in tweet:
+-    if letter not in vowel:
+-        print(letter,end="")
+Index: CS50/Problem Set 2/nutrition facts.py
+===================================================================
+diff --git a/CS50/Problem Set 2/nutrition facts.py b/CS50/Problem Set 2/nutrition facts.py
+deleted file mode 100644
+--- a/CS50/Problem Set 2/nutrition facts.py	
++++ /dev/null	
+@@ -1,28 +0,0 @@
+-fruits = {
+-    "Apple": 130,
+-    "Avocado": 50,
+-    "Banana": 110,
+-    "Cantaloupe": 50,
+-    "Grapefruit": 60,
+-    "Grapes": 90,
+-    "Honeydew Melon": 50,
+-    "Kiwifruit": 90,
+-    "Lemon": 15,
+-    "Lime": 20,
+-    "Nectarine": 60,
+-    "Orange": 80,
+-    "Peach": 60,
+-    "Pear": 100,
+-    "Pineapple": 50,
+-    "Plums": 70,
+-    "Strawberries": 50,
+-    "Sweet Cherries": 100,
+-    "Tangerine": 50,
+-    "Watermelon": 80,
+-}
+-
+-fruit_asked = input("Item: ").title().strip().lower()
+-
+-for key in fruits:
+-    if key in fruit_asked:
+-        print(f"Calories: {fruits[key]}")
+\ No newline at end of file
+Index: CS50/Problem Set 5/twttr.py
+===================================================================
+diff --git a/CS50/Problem Set 5/twttr.py b/CS50/Problem Set 5/twttr.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/twttr.py	
++++ /dev/null	
+@@ -1,35 +0,0 @@
+-def main():
+-    tweet = input("Tweet: ")
+-    print(shorten(tweet))
+-
+-def shorten(word):
+-    vowel = ["a", "e", "i", "o", "u"]
+-    twt = ""
+-    for letter in word:
+-        if letter.lower() not in vowel:
+-            twt += letter
+-    return twt
+-
+-
+-if __name__ == "__main__":
+-    main()
+-
+-
+-"""
+-def main():
+-    tweet = input("Tweet: ")
+-    twt = shorten(tweet)
+-    print("Output: ", twt)
+-
+-def shorten(word):
+-    vowel = ["a", "e", "i", "o", "u"]
+-    twt = []
+-    for letter in word:
+-        if letter not in vowel:
+-            twt.append(letter)
+-    twt_str = str("".join(twt))
+-    return twt_str
+-
+-if __name__ == "__main__":
+-    main()
+-"""
+\ No newline at end of file
+Index: CS50/Problem Set 0/einstein.py
+===================================================================
+diff --git a/CS50/Problem Set 0/einstein.py b/CS50/Problem Set 0/einstein.py
+deleted file mode 100644
+--- a/CS50/Problem Set 0/einstein.py	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-m = int(input("m:"))
+-c = int(pow(300000000,2))
+-e = m * c
+-print(e)
+\ No newline at end of file
+Index: CS50/Problem Set 2/camel case.py
+===================================================================
+diff --git a/CS50/Problem Set 2/camel case.py b/CS50/Problem Set 2/camel case.py
+deleted file mode 100644
+--- a/CS50/Problem Set 2/camel case.py	
++++ /dev/null	
+@@ -1,11 +0,0 @@
+-camelCase = input("camelCase: ")
+-
+-print("snake_case: ", end= "")
+-
+-for letter in camelCase:
+-    if letter.isupper():
+-        print("_" + letter.lower(), end="")
+-    else:
+-        print(letter, end="")
+-
+-print()
+\ No newline at end of file
+Index: CS50/.idea/vcs.xml
+===================================================================
+diff --git a/CS50/.idea/vcs.xml b/CS50/.idea/vcs.xml
+deleted file mode 100644
+--- a/CS50/.idea/vcs.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$USER_HOME$/OneDrive - mix.wvu.edu/Documents/GitHub/CS50P" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: CS50/Problem Set 5/plates.py
+===================================================================
+diff --git a/CS50/Problem Set 5/plates.py b/CS50/Problem Set 5/plates.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/plates.py	
++++ /dev/null	
+@@ -1,34 +0,0 @@
+-def main():
+-    plate = input("Plate: ")
+-    if is_valid(plate):
+-        print("Valid")
+-    else:
+-        print("Invalid")
+-
+-
+-def is_valid(s):
+-    # maximum of 6 characters and all characters have to be alphanumeric
+-    if 2 <= len(s) <= 6 and s.isalnum():
+-        # Return true if characters are all letters
+-        if s.isalpha():
+-            return True
+-        else:
+-            # Check for number in the middle
+-            # (only if the first two characters are letters and the last character is number)
+-            if s[:2].isalpha() and s[-1:].isdigit():
+-                for i in range(len(s)):
+-                    if s[i].isdigit():
+-                        # Return false if number starts with 0 or the following character is letter
+-                        if s[i].startswith("0") or s[i:].isalpha():
+-                            return False
+-                        else:
+-                            return True
+-            else:
+-                return False
+-    else:
+-        return False
+-
+-main()
+-
+-
+-
+Index: CS50/Problem Set 4/emojize.py
+===================================================================
+diff --git a/CS50/Problem Set 4/emojize.py b/CS50/Problem Set 4/emojize.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/emojize.py	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-import emoji
+-
+-user_answer = input("Input:")
+-output = emoji.emojize(user_answer)
+-print("Output:", output)
+Index: CS50/Problem Set 3/grocery list.py
+===================================================================
+diff --git a/CS50/Problem Set 3/grocery list.py b/CS50/Problem Set 3/grocery list.py
+deleted file mode 100644
+--- a/CS50/Problem Set 3/grocery list.py	
++++ /dev/null	
+@@ -1,33 +0,0 @@
+-"""grocery = {}
+-
+-while True:
+-    try:
+-        item = input().upper().strip()
+-        if item not in grocery:
+-            # Initialize item's quantity in grocery
+-            grocery[item] = 1
+-        else:
+-            # Update item's quantity
+-            grocery[item] = grocery[item] + 1
+-    except EOFError:
+-        sorted_dict = dict(sorted(list(grocery.items())))
+-        for item in sorted_dict:
+-            print(sorted_dict[item], item, sep=" ")
+-        break
+-    except KeyError:
+-        pass"""
+-
+-
+-grocery = {}
+-
+-while True:
+-    try:
+-        item = input().lower()
+-        if item in grocery:
+-            grocery[item] += 1
+-        else:
+-            grocery[item] = 1
+-    except EOFError:
+-        for key in sorted(grocery.keys()):
+-            print(grocery[key], key.upper())
+-        break
+Index: CS50/Problem Set 5/bank.py
+===================================================================
+diff --git a/CS50/Problem Set 5/bank.py b/CS50/Problem Set 5/bank.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/bank.py	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-def main():
+-    greeting = input("Greeting: ").strip().lower()
+-    print(value(greeting))
+-
+-def value(greeting):
+-    greeting = greeting.lower().strip()
+-    if "hello" in greeting:
+-        return 0
+-    elif "h" == greeting[0]:
+-        return 20
+-    else:
+-        return 100
+-
+-
+-if __name__ == "__main__":
+-    main()
+-
+-
+-
+Index: CS50/.idea/misc.xml
+===================================================================
+diff --git a/CS50/.idea/misc.xml b/CS50/.idea/misc.xml
+deleted file mode 100644
+--- a/CS50/.idea/misc.xml	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (CS50)" project-jdk-type="Python SDK" />
+-</project>
+\ No newline at end of file
+Index: CS50/Problem Set 5/test_bank.py
+===================================================================
+diff --git a/CS50/Problem Set 5/test_bank.py b/CS50/Problem Set 5/test_bank.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/test_bank.py	
++++ /dev/null	
+@@ -1,21 +0,0 @@
+-from bank import value
+-
+-def main():
+-    test_0()
+-    test_20()
+-    test_100()
+-
+-def test_0():
+-    assert value("hello sam") == 0
+-    assert value("hello") == 0
+-    assert value("Hello") == 0
+-
+-def test_20():
+-    assert value("Hi") == 20
+-    assert value("hey") == 20
+-
+-def test_100():
+-    assert value("What's up") == 100
+-
+-if __name__ == "__main__":
+-    main()
+Index: CS50/Problem Set 0/tip calculator.py
+===================================================================
+diff --git a/CS50/Problem Set 0/tip calculator.py b/CS50/Problem Set 0/tip calculator.py
+deleted file mode 100644
+--- a/CS50/Problem Set 0/tip calculator.py	
++++ /dev/null	
+@@ -1,17 +0,0 @@
+-def main():
+-    dollars = dollars_to_float(input("How much was the meal? "))
+-    percent = percent_to_float(input("What percentage would you like to tip? "))
+-    tip = dollars * percent
+-    print(f"Leave ${tip:.2f}")
+-
+-
+-def dollars_to_float(d):
+-    d = float(d.replace("$", " "))
+-    return d
+-
+-
+-def percent_to_float(p):
+-    p = float(p.replace("%", " ")) / 100
+-    return p
+-
+-main()
+Index: CS50/Problem Set 5/fuel.py
+===================================================================
+diff --git a/CS50/Problem Set 5/fuel.py b/CS50/Problem Set 5/fuel.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/fuel.py	
++++ /dev/null	
+@@ -1,30 +0,0 @@
+-def main():
+-    frac = input("Fraction: ")
+-    pct = convert(frac)
+-    print(gauge(pct))
+-
+-
+-def convert(fraction):
+-    x, y = fraction.split("/")
+-    if int(x)/int(y) > 1:
+-        raise ValueError
+-    elif int(y) == 0:
+-        raise ZeroDivisionError
+-    return int(int(x)/int(y) * 100)
+-
+-def gauge(percentage):
+-    try:
+-        if 0 <= percentage <= 1:
+-            return "E"
+-        elif 99 <= percentage <= 100:
+-            return "F"
+-        elif 1 < percentage < 99:
+-            return f"{int(percentage)}%"
+-        else:
+-            raise TypeError
+-    except TypeError:
+-        pass
+-
+-
+-if __name__ == "__main__":
+-    main()
+\ No newline at end of file
+Index: CS50/Problem Set 3/outdated.py
+===================================================================
+diff --git a/CS50/Problem Set 3/outdated.py b/CS50/Problem Set 3/outdated.py
+deleted file mode 100644
+--- a/CS50/Problem Set 3/outdated.py	
++++ /dev/null	
+@@ -1,55 +0,0 @@
+-months = [
+-    "January",
+-    "February",
+-    "March",
+-    "April",
+-    "May",
+-    "June",
+-    "July",
+-    "August",
+-    "September",
+-    "October",
+-    "November",
+-    "December"
+-]
+-
+-"""while True:
+-    date = input("Date: ")
+-    try:
+-        if "/" in date:
+-            mm, dd, yyyy = date.split("/")
+-        elif "," in date:
+-            mmdd, yyyy = date.split(", ")
+-            mm, dd = mmdd.split(" ")
+-            # No need to check if mm in months. KeyError is handled separately.
+-            mm = (months.index(mm)) + 1
+-        if int(mm) > 12 or int(dd) > 31:
+-            raise ValueError
+-    except (AttributeError, ValueError, NameError, KeyError):
+-        pass
+-    else:
+-        print(f"{int(yyyy)}-{int(mm):02}-{int(dd):02}")
+-        break"""
+-
+-
+-while True:
+-    date = input("Date (mm/dd/year): ").title().strip()
+-    try:
+-        month, day, year = date.split("/")
+-        if 1 <= int(month) <= 12 and 1 <= int(day) <= 31:
+-            break
+-
+-    except:
+-        try:
+-            old_month, old_day, year = date.split(" ")
+-            for i in range(len(months)):
+-                if old_month == months[i]:
+-                    month = i + 1
+-            day = old_day.replace(",", "")
+-            if 1 <= int(month) <= 12 and 1 <= int(day) <= 31:
+-                break
+-        except:
+-            pass
+-
+-print(f"{year}-{int(month)}-{int(day)}")
+-
+Index: CS50/Problem Set 1/file extensions.py
+===================================================================
+diff --git a/CS50/Problem Set 1/file extensions.py b/CS50/Problem Set 1/file extensions.py
+deleted file mode 100644
+--- a/CS50/Problem Set 1/file extensions.py	
++++ /dev/null	
+@@ -1,15 +0,0 @@
+-#extensions image': ['gif', 'jpg', 'jpeg', 'png'],
+-#extensions application': ['pdf', 'zip'],
+-
+-file = input("Name of the file: ").replace("jpg","jpeg").lower().strip().split(".")
+-image = ["gif", "png", "jpeg","jpg"]
+-application = ["zip", "pdf"]
+-
+-if file[-1] == "txt":
+-    print("text/plain")
+-elif file[-1] in application:
+-    print(f'application/{file[-1]}')
+-elif file[-1] in image:
+-    print(f'image/{file[-1]}')
+-else:
+-    print("application/octet-stream")
+\ No newline at end of file
+Index: CS50/Problem Set 0/playback speed.py
+===================================================================
+diff --git a/CS50/Problem Set 0/playback speed.py b/CS50/Problem Set 0/playback speed.py
+deleted file mode 100644
+--- a/CS50/Problem Set 0/playback speed.py	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-playback = input().replace(" ", "...")
+-print(playback)
+-
+-
+Index: CS50/Problem Set 0/making faces.py
+===================================================================
+diff --git a/CS50/Problem Set 0/making faces.py b/CS50/Problem Set 0/making faces.py
+deleted file mode 100644
+--- a/CS50/Problem Set 0/making faces.py	
++++ /dev/null	
+@@ -1,10 +0,0 @@
+-def main():
+-    user_input = input("Input: ")
+-    final_user_input = convert(user_input)
+-    print(final_user_input)
+-
+-def convert(user_input):
+-    user_input = user_input.replace(":)", "🙂").replace(":(", "🙁")
+-    return user_input
+-
+-main()
+\ No newline at end of file
+Index: CS50/Problem Set 4/figlet.py
+===================================================================
+diff --git a/CS50/Problem Set 4/figlet.py b/CS50/Problem Set 4/figlet.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/figlet.py	
++++ /dev/null	
+@@ -1,85 +0,0 @@
+-"""
+-Github Code
+-
+-figlet = Figlet()
+-argv1 = ["-f", "--font"]
+-
+-def main():
+-    if len(sys.argv) < 2:
+-        font = random.choice(figlet.getFonts())
+-        figletize("Input: ", font)
+-    elif len(sys.argv) > 2 and sys.argv[1] in argv1 and sys.argv[2] in figlet.getFonts():
+-        font = sys.argv[2]
+-        figletize("Input: ", font)
+-    else:
+-        sys.exit("Invalid usage")
+-
+-
+-def figletize(prompt, f):
+-    txt = input(prompt)
+-    figlet.setFont(font=f)
+-    print("Output:")
+-    print(figlet.renderText(txt))
+-
+-
+-main()
+-
+-"""
+-
+-
+-"""
+-Dior's Code 
+-import sys
+-import random
+-from pyfiglet import Figlet
+-figlet = Figlet()
+-
+-if len(sys.argv) == 1:
+-    IsRandomFont = True
+-elif len(sys.argv) == 3 and (sys.argv[1] == "-f" or sys.argv[1] == "--font"):
+-    IsRandomFont = False
+-else:
+-    sys.exit(1)
+-
+-msg = input("Input: ")
+-
+-figlet.getFonts()
+-if not IsRandomFont:
+-    try:
+-        figlet.setFont(font=sys.argv[2])
+-        print(figlet.renderText(msg))
+-    except:
+-        print("Invalid usage")
+-        sys.exit(1)
+-else:
+-    font = random.choice(figlet.getFonts())
+-"""
+-
+-#My Code
+-import random
+-import sys
+-from pyfiglet import Figlet
+-
+-figlet = Figlet()
+-
+-#Expects zero or two command-line arguments:
+-
+-#Zero if the user would like to output text in a random font.
+-if len(sys.argv) == 1:
+-    f = random.choice(figlet.getFonts())
+-
+- #Two if the user would like to output text in a specific font, in which case the first of the two should be -f or --font, and the second of the two should be the name of the font.
+-elif len(sys.argv) == 3 and (sys.argv[1] == "-f" or sys.argv[1] == "--font"):
+-    f = sys.argv[2]
+-
+-else:
+-    print("Invalid Usage")
+-    sys.exit(1)
+-
+-#Prompts the user for a str of text.
+-user_input = input("Input: ")
+-
+-#Outputs that text in the desired font.
+-figlet.setFont(font=f)
+-print(figlet.renderText(user_input))
+-
+Index: CS50/Problem Set 4/test.py
+===================================================================
+diff --git a/CS50/Problem Set 4/test.py b/CS50/Problem Set 4/test.py
+deleted file mode 100644
+--- a/CS50/Problem Set 4/test.py	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-import requests
+-import sys
+-
+-if len(sys.argv) == 2:
+-    try:
+-        value = float(sys.argv[1])
+-    except:
+-        print("Command-line argument is not a number")
+-
+-else:
+-    print("missing command-line argument")
+-    sys.exit(1)
+-
+-try:
+-    r = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+-    response = r.json()
+-
+-except requests.RequestException:
+-    ...
+\ No newline at end of file
+Index: CS50/.idea/inspectionProfiles/profiles_settings.xml
+===================================================================
+diff --git a/CS50/.idea/inspectionProfiles/profiles_settings.xml b/CS50/.idea/inspectionProfiles/profiles_settings.xml
+deleted file mode 100644
+--- a/CS50/.idea/inspectionProfiles/profiles_settings.xml	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-<component name="InspectionProjectProfileManager">
+-  <settings>
+-    <option name="USE_PROJECT_PROFILE" value="false" />
+-    <version value="1.0" />
+-  </settings>
+-</component>
+\ No newline at end of file
+Index: CS50/Problem Set 5/test_twttr.py
+===================================================================
+diff --git a/CS50/Problem Set 5/test_twttr.py b/CS50/Problem Set 5/test_twttr.py
+deleted file mode 100644
+--- a/CS50/Problem Set 5/test_twttr.py	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-from twttr import shorten
+-import pytest
+-
+-def main():
+-    test_case()
+-    test_numbers()
+-    test_punctuation()
+-
+-def test_case():
+-    assert shorten("twitter") == "twttr"
+-    assert shorten("TWITTER") == "TWTTR"
+-    assert shorten("TwItTeR") == "TwtTR"
+-
+-
+-def test_numbers():
+-    assert shorten("1234") == "1234"
+-
+-def test_punctuation():
+-    assert shorten("!?.,") == "!?.,"
+\ No newline at end of file
+Index: CS50/Problem Set 2/coke machine.py
+===================================================================
+diff --git a/CS50/Problem Set 2/coke machine.py b/CS50/Problem Set 2/coke machine.py
+deleted file mode 100644
+--- a/CS50/Problem Set 2/coke machine.py	
++++ /dev/null	
+@@ -1,14 +0,0 @@
+-amount_due = 50
+-
+-while amount_due > 0:
+-    print("Amount Due:", "$.",amount_due)
+-    insert_coin = int(input("Insert coin: "))
+-    if insert_coin in [25,10,5]:
+-        amount_due -= insert_coin
+-    else:
+-        print("Only 25, 10, or 5, cents")
+-
+-
+-if amount_due <= 0:
+-    print("Change owed:", "$.", abs(amount_due))
+-

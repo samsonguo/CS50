@@ -1,0 +1,94 @@
+#Modules
+loading modules - import
+import random
+coin = random.choice(["heads", "tails"])
+print(coin)
+
+or
+
+from random import choice
+coin = choice(["heads", "tails"])
+print(coin)
+
+#random.randint(a,b)
+import random
+number = random.randint(1,10)
+print(number)
+
+#random.shuffle(x)
+import random
+cards = ["jack", "queen", "king"]
+random.shuffle(cards)
+for cards in cards:
+    print(card)
+
+#import statistics
+print(statistics.mean([100, 90]))
+
+#command-line arguments,sys
+sys.argv - returns all the inputs that the user typed
+import sys
+print("hello, my name is", sys.argv[1])
+
+#sys.argv
+if len(sys.argv) < 2:
+    print("too few arguments")
+elif len(sys.argv) > 2:
+    print("too many arguments")
+print("hello, my name is", sys.argv[1])
+
+
+#sys.exit
+import sys
+if len(sys.argv) < 2:
+    sys.exit("too few arguments")
+elif len(sys.argv) > 2:
+    sys.exit("too many arguments")
+print("hello, my name is", sys.argv[1])
+
+or
+
+import sys
+if len(sys.argv) < 2:
+    sys.exit("too few arguments")
+for arg in sys.argv:
+    print("hello, my name is", arg)
+
+#slices
+import sys
+if len(sys.argv) < 2:
+    sys.exit("too few arguments")
+for arg in sys.argv[1:]:
+    print("hello, my name is", arg)
+
+
+#can use pip to install packages
+then import the package
+
+#APIs, requests, JSON
+import json
+import requests
+import sys
+if len(sys.argv) != 2:
+    sys.exit()
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=1&term=" + sys.argv[1])
+print(json.dumps(response.json()))
+
+o = response.json()
+for result in o["results"]:
+    print(result["trackName"])
+
+#custom libraries
+create file (ex. sayings)
+def hello(name):
+    print(f'hello, {name}')
+def goodbye(name):
+    print(f'goodbye, {name}')
+if __name__ == "__main__":
+main()
+
+import sys
+from sayings import hello
+if len(sys.argv) == 2:
+    hello(sys.argv[1])
+
